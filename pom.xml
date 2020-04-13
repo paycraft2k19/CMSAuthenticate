@@ -13,7 +13,45 @@
 	<artifactId>cms-authentication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cms-authentication</name>
+	<url>https://github.com/paycraft2k19/CMSAuthenticate</url>
 	<description>Demo project for Spring Boot</description>
+
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:git://github.com/paycraft2k19/CMSAuthenticate.git</connection>
+		<developerConnection>scm:git:ssh://github.com:paycraft2k19/CMSAuthenticate.git</developerConnection>
+		<url>https://github.com/paycraft2k19/CMSAuthenticate</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>Rahul Kumar</name>
+			<email>paycraft2k19@gmail.com</email>
+			<organization>Sonatype</organization>
+			<organizationUrl>https://github.com/paycraft2k19</organizationUrl>
+		</developer>
+	</developers>
+
+
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -92,6 +130,47 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
