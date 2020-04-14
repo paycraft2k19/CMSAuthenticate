@@ -13,5 +13,4 @@ public class Authenticate {
 
 	private String onBoardingToken;
 	private String deviceId;
-	private long timestamp;
 }
